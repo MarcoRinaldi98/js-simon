@@ -8,6 +8,8 @@ const risultatoDom = document.getElementById('risultato');
 
 let secondi = 30;
 
+let indovinati = [];
+
 //richiedo i numeri all'utente dopo 32 secondi dall'avvio della pagina
 const richiestaNumeri = setTimeout(function() {
     infoTimerDom.classList.add('d-none');
@@ -18,7 +20,7 @@ for (let i = 0; i < 5; i++) {
 }
 console.log(numeriScritti);
 
-const indovinati = numeriIndovinati(cinqueNumeri, numeriScritti);
+indovinati = numeriIndovinati(cinqueNumeri, numeriScritti);
 console.log(indovinati);
 
 risultatoDom.innerHTML = `I numeri erano: ${cinqueNumeri};<br/> I numeri che hai scritto sono: ${numeriScritti};<br/> Quindi hai indovinato ${indovinati.length} numeri`;
@@ -48,14 +50,14 @@ const mostroNumeri = setInterval( function() {
 //Funzione per vedere quanti numeri sono stati indovinati
 function numeriIndovinati(cinqueNumeri, numeriScritti) {
     for (let i = 0; i < numeriScritti.length; i++) {
-        let indovinati = [];
+        
         if (cinqueNumeri.includes(numeriScritti[i])) {
             indovinati.push(numeriScritti[i]);
         } else {
             i++;
-        }
-        return indovinati;
+        }       
     }
+    return indovinati;
 }
 
 //Funzione per generare 5 numeri casuali unici da 1 a 100
